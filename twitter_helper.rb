@@ -8,6 +8,7 @@ require 'iconv'
 require 'twitter'
 require 'active_support/all'
 require 'oauth'
+require 'mysql'
 require 'pry'
 
 def loadyaml(yaml)
@@ -20,6 +21,8 @@ end
 
 def setvars
   @yml = loadyaml('config.yml')
+
+  @db = Mysql.real_connect(@yml['database']['host'], @yml['database']['user'], @yml['database']['password'], @yml['database']['database'])
 
   @client = Twitter::REST::Client.new do |config|
     config.consumer_key        = @yml['twitter']['consumer_key']

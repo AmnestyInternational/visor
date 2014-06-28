@@ -6,6 +6,21 @@ def fetch_tweets_from_event(event, since_id = 0)
   @client.search( "", parameters ).to_h
 end
 
-foo = fetch_tweets_from_event(event)
+sql = ""
 
-binding.pry
+fetch_tweets_from_event(event)[:statuses].each do |tweet|
+  sql = """
+    REPLACE INTO tweets (tweet_id, user_id, text, created_at, retweet_count, favorite_count)
+    VALUES (
+      '#{tweet[:id]}',
+      '#{tweet[:user][:id]}',
+      '#{Mysql.escape_string(tweet[:text])}',
+      '#{DateTime.parse(tweet[:created_at]).strftime("%Y-%m-%d %H:%M")}',
+      '#{tweet[:retweet_count]}',
+      '#{tweet[:favorite_count]}');\n"""
+
+  puts sql
+
+  @db.query(sql)
+end
+
