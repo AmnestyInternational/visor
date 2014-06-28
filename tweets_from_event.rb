@@ -6,6 +6,6 @@ def fetch_tweets_from_event(event, since_id = 0)
   @client.search( "", parameters ).to_h
 end
 
-binding.pry
+foo = fetch_tweets_from_event(event)
 
-fetch_tweets_from_event(event)
+binding.pry
