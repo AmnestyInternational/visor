@@ -1,4 +1,10 @@
+event:
+  - name: brazil stadium
+    lat: -3.083056
+    long: -60.028056
+    range: 200
 twitter:
-  - user: foo
-  - pass: bar
-
+  consumer_key: foo
+  consumer_secret: bar
+  access_token: baz
+  access_token_secret: qux
