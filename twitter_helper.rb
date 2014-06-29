@@ -37,4 +37,23 @@ def event
   :range => @yml['event'].first['range']}
 end
 
+def twitter_strings_to_db(string)
+  return 'NULL' if string.nil?
+  return "'" + Mysql.escape_string(string) + "'"
+end
+
+def twitter_dates_to_db(string)
+  "'" + DateTime.parse(string).strftime("%Y-%m-%d %H:%M") + "'"
+end
+
+def twitter_int_to_db(int)
+  return 'NULL' if int.nil?
+  return int
+end
+
+def twitter_lat_long_to_db(lat, long)
+  return 'NULL' if lat.nil? || long.nil?
+  return "POINT(#{lat}, #{long})"
+end
+
 setvars
