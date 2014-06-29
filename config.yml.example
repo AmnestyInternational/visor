@@ -1,10 +1,18 @@
 event:
-  - name: brazil stadium
-    lat: -3.083056
-    long: -60.028056
-    range: 200
+  - name: Toronto Pride
+    lat: 43.665704
+    long: -79.380966
+    range: 0.7
 twitter:
   consumer_key: foo
   consumer_secret: bar
   access_token: baz
-  access_token_secret: qux
+  access_token_secret: quz
+database:
+  host: foo
+  user: bar
+  password: baz
+  database: quz
+google:
+  user: foo
+  password: bar
